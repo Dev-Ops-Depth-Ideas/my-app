@@ -234,14 +234,43 @@
       transform: translateY(-4px);
     }
 
+    /* Pro Vector Icon Badge */
+    .service-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.08);
+      transition: all 0.25s ease;
+    }
+
+    .card:hover .service-icon-box {
+      border-color: var(--cyan);
+      box-shadow: 0 0 16px rgba(0, 255, 204, 0.25);
+      transform: scale(1.05);
+    }
+
+    .service-icon-box svg {
+      width: 22px;
+      height: 22px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .card-title {
       font-size: 1.05rem;
       font-weight: 600;
       color: #ffffff;
       margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .card-desc {
@@ -250,7 +279,7 @@
       line-height: 1.6;
     }
 
-    /* Powered By / Platforms Grid */
+    /* Powered By Grid */
     .platform-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -424,7 +453,7 @@
       padding-top: 0.8rem;
     }
 
-    /* Action Row (Quote + Socials) */
+    /* Action Row */
     .action-row {
       display: flex;
       align-items: center;
@@ -651,25 +680,56 @@
       <p class="subtitle anim-sub">Αναλαμβάνουμε την αυτόματη συλλογή δεδομένων, τη διασύνδεση εφαρμογών και την κατασκευή ταχύτατων landing pages για την επιχείρησή σας.</p>
     </header>
 
-    <!-- Υπηρεσίες -->
+    <!-- Υπηρεσίες με Pro Tech Vector Icons (Όχι Emojis) -->
     <main class="grid anim-cards">
+      <!-- Card 1: Data Extraction / Database -->
       <div class="card">
-        <div class="card-title">⚡ Αυτόματη Συλλογή Δεδομένων</div>
+        <div class="service-icon-box">
+          <svg viewBox="0 0 24 24">
+            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+          </svg>
+        </div>
+        <div class="card-title">Αυτόματη Συλλογή Δεδομένων</div>
         <div class="card-desc">Εξάγουμε αυτόματα τιμές ανταγωνισμού, καταλόγους και αναφορές από οποιαδήποτε πηγή, έτοιμα σε Excel ή βάση δεδομένων χωρίς χειροκίνητη εργασία.</div>
       </div>
 
+      <!-- Card 2: Automations / CPU Microchip -->
       <div class="card">
-        <div class="card-title">⚙️ Αυτοματοποίηση Εργασιών</div>
+        <div class="service-icon-box">
+          <svg viewBox="0 0 24 24">
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+        </div>
+        <div class="card-title">Αυτοματοποίηση Εργασιών</div>
         <div class="card-desc">Εξαλείφουμε τις επαναλαμβανόμενες ρουτίνες συνδέοντας τα συστήματά σας, εξοικονομώντας σας ώρες καθημερινής εργασίας.</div>
       </div>
 
+      <!-- Card 3: High Speed Web / Edge Browser -->
       <div class="card">
-        <div class="card-title">🚀 Σελίδες Υψηλής Ταχύτητας</div>
+        <div class="service-icon-box">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="card-title">Σελίδες Υψηλής Ταχύτητας</div>
         <div class="card-desc">Μοντέρνες, ελαφριές σελίδες βελτιστοποιημένες για κινητά και PC που φορτώνουν ακαριαία και μετατρέπουν τους επισκέπτες σε πελάτες.</div>
       </div>
     </main>
 
-    <!-- Powered By: Vercel, AI, GitHub, Cloud Infrastructure -->
+    <!-- Powered By -->
     <div class="anim-section">
       <div class="section-title"><span>//</span> POWERED BY INDUSTRY LEADERS</div>
       <div class="platform-grid">
@@ -753,7 +813,7 @@
       </div>
     </div>
 
-    <!-- Συχνές Ερωτήσεις (FAQ) -->
+    <!-- FAQ -->
     <div class="anim-section">
       <div class="section-title"><span>//</span> ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ (FAQ)</div>
       <div class="faq-wrapper">
