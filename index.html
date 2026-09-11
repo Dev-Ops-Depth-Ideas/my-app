@@ -229,11 +229,11 @@
       box-shadow: none;
     }
 
-    /* Social Links Με Αυθεντικά Brand Colors */
+    /* Social Links με μόνιμα αυθεντικά χρώματα */
     .social-links {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.9rem;
       flex-wrap: wrap;
     }
 
@@ -241,70 +241,59 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      color: var(--muted);
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
       text-decoration: none;
       transition: all 0.25s ease;
     }
 
     .social-item svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       fill: currentColor;
-      transition: transform 0.25s ease;
     }
 
-    .social-item:hover svg {
-      transform: scale(1.15);
-    }
-
-    /* GitHub Brand Color */
-    .social-item.github:hover {
+    /* GitHub - Καθαρό άσπρο */
+    .social-item.github {
       color: #ffffff;
-      border-color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
-      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    /* LinkedIn Brand Color */
-    .social-item.linkedin:hover {
+    /* LinkedIn - Επίσημο Μπλε */
+    .social-item.linkedin {
       color: #0a66c2;
-      border-color: #0a66c2;
-      background: rgba(10, 102, 194, 0.12);
-      box-shadow: 0 0 16px rgba(10, 102, 194, 0.35);
-      transform: translateY(-3px);
+      background: rgba(10, 102, 194, 0.15);
+      border: 1px solid rgba(10, 102, 194, 0.4);
+      box-shadow: 0 0 10px rgba(10, 102, 194, 0.2);
     }
 
-    /* Telegram Brand Color */
-    .social-item.telegram:hover {
+    /* Telegram - Επίσημο Γαλάζιο */
+    .social-item.telegram {
       color: #229ed9;
-      border-color: #229ed9;
-      background: rgba(34, 158, 217, 0.12);
-      box-shadow: 0 0 16px rgba(34, 158, 217, 0.35);
-      transform: translateY(-3px);
+      background: rgba(34, 158, 217, 0.15);
+      border: 1px solid rgba(34, 158, 217, 0.4);
+      box-shadow: 0 0 10px rgba(34, 158, 217, 0.2);
     }
 
-    /* WhatsApp Brand Color */
-    .social-item.whatsapp:hover {
+    /* WhatsApp - Επίσημο Πράσινο */
+    .social-item.whatsapp {
       color: #25d366;
-      border-color: #25d366;
-      background: rgba(37, 211, 102, 0.12);
-      box-shadow: 0 0 16px rgba(37, 211, 102, 0.35);
-      transform: translateY(-3px);
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid rgba(37, 211, 102, 0.4);
+      box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
     }
 
-    /* X (Twitter) Brand Color */
-    .social-item.x-corp:hover {
+    /* X (Twitter) - Έντονο Λευκό */
+    .social-item.x-corp {
       color: #ffffff;
-      border-color: #ffffff;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 16px rgba(255, 255, 255, 0.25);
-      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .social-item:hover, .social-item:active {
+      transform: scale(1.08);
     }
 
     footer {
