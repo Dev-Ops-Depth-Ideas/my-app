@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Dev-Ops-Architect | Έξυπνοι Αυτοματισμοί & Digital Architecture</title>
   <meta name="title" content="Dev-Ops-Architect | Έξυπνοι Αυτοματισμοί & Digital Architecture">
   <meta name="description" content="Εξειδικευμένες λύσεις αυτόματης συλλογής δεδομένων, διασύνδεσης συστημάτων και κατασκευής ταχύτατων landing pages.">
@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
-  
+
   <style>
     :root {
       --bg: #0b0f17;
@@ -463,13 +463,6 @@
       backdrop-filter: blur(10px);
     }
 
-    .actions-left {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
     .btn-quote {
       display: inline-flex;
       align-items: center;
@@ -492,26 +485,6 @@
       border-color: #00ffcc;
       box-shadow: 0 0 18px rgba(0, 255, 204, 0.25);
       transform: translateY(-2px);
-    }
-
-    .btn-copy {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0.85rem 1.2rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      color: var(--text);
-      font-size: 0.88rem;
-      font-family: 'JetBrains Mono', monospace;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-copy:hover {
-      border-color: rgba(0, 255, 204, 0.4);
-      background: rgba(0, 255, 204, 0.06);
     }
 
     .social-dock {
@@ -571,7 +544,7 @@
       transform: scale(1.08) translateY(-2px);
     }
 
-    /* Contact Card with AJAX UI */
+    /* Contact Card */
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -795,6 +768,8 @@
             <line x1="15" y1="20" x2="15" y2="23"></line>
             <line x1="20" y1="9" x2="23" y2="9"></line>
             <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
           </svg>
         </div>
         <div class="card-title">Αυτοματοποίηση Εργασιών</div>
@@ -886,12 +861,7 @@
 
     <!-- Actions & Socials Bar -->
     <div class="action-row anim-section">
-      <div class="actions-left">
-        <a href="#contact" class="btn-quote">Ζητήστε Προσφορά</a>
-        <button class="btn-copy" id="copy-tg" onclick="copyContact('@Dev_Ops_Architect')">
-          <span>📋</span> <span>Copy Telegram</span>
-        </button>
-      </div>
+      <a href="#contact" class="btn-quote">Ζητήστε Προσφορά</a>
 
       <div class="social-dock">
         <a href="https://github.com/Dev-Ops-Depth-Ideas" target="_blank" rel="noopener" class="social-item github" title="GitHub">
@@ -920,7 +890,7 @@
     <div class="contact-card anim-section" id="contact">
       <h2>// Επικοινωνία & Προσφορά</h2>
       <p>Συμπληρώστε τα στοιχεία σας και θα επικοινωνήσουμε άμεσα μαζί σας για το έργο σας.</p>
-      
+
       <form id="ajax-contact-form">
         <input type="hidden" name="access_key" value="28624fcb-7195-49da-96ce-f8931dc01287">
         <input type="hidden" name="subject" value="Νέο Αίτημα από Dev-Ops-Architect">
@@ -1007,20 +977,6 @@
     resize();
     animate();
 
-    // 1-Click Copy Helper
-    function copyContact(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById('copy-tg');
-        const originalHTML = btn.innerHTML;
-        btn.innerHTML = '<span>✔</span> <span>Copied!</span>';
-        btn.style.borderColor = '#00ffcc';
-        setTimeout(() => {
-          btn.innerHTML = originalHTML;
-          btn.style.borderColor = '';
-        }, 2000);
-      });
-    }
-
     // In-Page AJAX Web3Forms Submission (No White Page / No Redirect)
     const form = document.getElementById('ajax-contact-form');
     const submitBtn = document.getElementById('submit-btn');
@@ -1029,7 +985,7 @@
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       submitBtn.disabled = true;
       btnText.textContent = '[ TRANSMITTING... ]';
       feedback.className = '';
