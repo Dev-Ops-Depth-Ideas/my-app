@@ -13,7 +13,6 @@
       --card-bg: rgba(17, 24, 39, 0.85);
       --border: rgba(255, 255, 255, 0.08);
       --cyan: #00ffcc;
-      --cyan-muted: #0d9488;
       --text: #f1f5f9;
       --muted: #94a3b8;
     }
@@ -33,7 +32,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem 1.25rem;
+      padding: 3rem 1.5rem;
       position: relative;
       overflow-x: hidden;
     }
@@ -49,17 +48,17 @@
     }
 
     .container {
-      max-width: 640px;
+      max-width: 1040px;
       width: 100%;
       position: relative;
       z-index: 1;
+      margin: 0 auto;
     }
 
-    /* Staggered Fade In Animations */
     @keyframes smoothFadeIn {
       from {
         opacity: 0;
-        transform: translateY(14px);
+        transform: translateY(16px);
         filter: blur(4px);
       }
       to {
@@ -76,7 +75,8 @@
     .anim-actions { animation: smoothFadeIn 0.8s ease-out 0.6s forwards; opacity: 0; }
 
     header {
-      margin-bottom: 2.2rem;
+      margin-bottom: 2.8rem;
+      max-width: 760px;
     }
 
     .badge {
@@ -109,11 +109,11 @@
     }
 
     h1 {
-      font-size: 2.1rem;
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.2;
       letter-spacing: -0.02em;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1rem;
       color: #ffffff;
     }
 
@@ -124,60 +124,77 @@
     }
 
     .subtitle {
-      font-size: 1rem;
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
       color: var(--muted);
       line-height: 1.6;
     }
 
+    /* Grid: 1 στήλη σε κινητό, 3 στήλες αυτόματα σε desktop */
     .grid {
       display: grid;
-      gap: 1.1rem;
-      margin-bottom: 2.2rem;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.8rem;
+    }
+
+    @media (min-width: 860px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 1.4rem;
+      padding: 1.5rem;
       backdrop-filter: blur(12px);
       transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     .card:hover {
       border-color: rgba(0, 255, 204, 0.3);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
 
     .card-title {
       font-size: 1.1rem;
       font-weight: 600;
       color: #ffffff;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
     .card-desc {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       color: var(--muted);
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
+    /* Actions: κάθετα σε κινητό, οριζόντια δίπλα-δίπλα σε PC */
     .actions {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 1rem;
+      max-width: 520px;
     }
 
-    /* Βελτιωμένο Κουμπί: Σκούρο Background, Neon Border, Καθαρά Γράμματα */
+    @media (min-width: 600px) {
+      .actions {
+        flex-direction: row;
+      }
+    }
+
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      padding: 1rem;
+      padding: 1rem 1.6rem;
       background: #111827;
       color: #00ffcc;
       border: 1px solid #00ffcc;
@@ -187,7 +204,8 @@
       border-radius: 10px;
       transition: all 0.25s ease;
       box-shadow: 0 0 12px rgba(0, 255, 204, 0.15);
-      letter-spacing: 0.01em;
+      flex: 1;
+      white-space: nowrap;
     }
 
     .btn:hover {
@@ -201,6 +219,7 @@
       color: var(--text);
       border: 1px solid var(--border);
       box-shadow: none;
+      flex: 1;
     }
 
     .btn-secondary:hover {
@@ -211,7 +230,7 @@
     }
 
     footer {
-      margin-top: 2.5rem;
+      margin-top: 3.5rem;
       text-align: center;
       font-size: 0.8rem;
       color: var(--muted);
@@ -232,24 +251,24 @@
 
     <main class="grid anim-cards">
       <div class="card">
-        <div class="card-title">⚡ Αυτόματη Συλλογή Δεδομένων (Data Extraction)</div>
-        <div class="card-desc">Εξάγουμε αυτόματα τιμές ανταγωνισμού, καταλόγους και αναφορές από οποιαδήποτε πηγή, έτοιμα σε Excel ή βάση δεδομένων χωρίς καμία χειροκίνητη εργασία.</div>
+        <div class="card-title">⚡ Αυτόματη Συλλογή Δεδομένων</div>
+        <div class="card-desc">Εξάγουμε αυτόματα τιμές ανταγωνισμού, καταλόγους και αναφορές από οποιαδήποτε πηγή, έτοιμα σε Excel ή βάση δεδομένων χωρίς χειροκίνητη εργασία.</div>
       </div>
 
       <div class="card">
-        <div class="card-title">⚙️ Αυτοματοποίηση Καθημερινών Εργασιών</div>
+        <div class="card-title">⚙️ Αυτοματοποίηση Εργασιών</div>
         <div class="card-desc">Εξαλείφουμε τις επαναλαμβανόμενες ρουτίνες συνδέοντας τα συστήματά σας, εξοικονομώντας σας ώρες καθημερινής εργασίας.</div>
       </div>
 
       <div class="card">
-        <div class="card-title">🚀 Landing Pages Υψηλής Ταχύτητας</div>
-        <div class="card-desc">Μοντέρνες, ελαφριές σελίδες βελτιστοποιημένες για κινητά που φορτώνουν ακαριαία και μετατρέπουν τους επισκέπτες σε πελάτες.</div>
+        <div class="card-title">🚀 Σελίδες Υψηλής Ταχύτητας</div>
+        <div class="card-desc">Μοντέρνες, ελαφριές σελίδες βελτιστοποιημένες για κινητά και PC που φορτώνουν ακαριαία και μετατρέπουν τους επισκέπτες σε πελάτες.</div>
       </div>
     </main>
 
     <div class="actions anim-actions">
-      <a href="mailto:dev@egkrinis.com" class="btn">Στείλτε Μήνυμα / Ζητήστε Προσφορά</a>
-      <a href="https://github.com/Dev-Ops-Depth-Ideas" target="_blank" rel="noopener" class="btn btn-secondary">Δείτε τα Projects στο GitHub</a>
+      <a href="mailto:dev@egkrinis.com" class="btn">Ζητήστε Προσφορά</a>
+      <a href="https://github.com/Dev-Ops-Depth-Ideas" target="_blank" rel="noopener" class="btn btn-secondary">Δείτε τα Projects</a>
     </div>
 
     <footer class="anim-actions">
@@ -270,7 +289,7 @@
 
     function initParticles() {
       particles = [];
-      const count = Math.min(width * 0.03, 30);
+      const count = Math.min(width * 0.025, 35);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
