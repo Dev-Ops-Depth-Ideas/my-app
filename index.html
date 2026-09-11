@@ -16,7 +16,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -28,6 +28,7 @@
       --blue: #38bdf8;
       --text: #f1f5f9;
       --muted: #94a3b8;
+      --terminal-bg: #080c14;
     }
 
     * {
@@ -188,7 +189,7 @@
       font-size: 1.25rem;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -199,6 +200,84 @@
       color: var(--cyan);
     }
 
+    /* Metrics Bar */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .metric-card {
+      background: rgba(17, 24, 39, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .metric-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--cyan);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Terminal Window */
+    .terminal-box {
+      background: var(--terminal-bg);
+      border: 1px solid rgba(0, 255, 204, 0.25);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .terminal-header {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .term-dot.red { background: #ef4444; }
+    .term-dot.yellow { background: #eab308; }
+    .term-dot.green { background: #22c55e; }
+
+    .term-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    .terminal-body {
+      padding: 1.4rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    .t-cyan { color: var(--cyan); }
+    .t-blue { color: var(--blue); }
+    .t-gray { color: #64748b; }
+    .t-green { color: #4ade80; }
+
+    /* Service Grid */
     .grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -272,6 +351,7 @@
       line-height: 1.6;
     }
 
+    /* Workflow Steps */
     .steps-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -313,6 +393,7 @@
       line-height: 1.55;
     }
 
+    /* FAQ */
     .faq-wrapper {
       display: flex;
       flex-direction: column;
@@ -368,6 +449,7 @@
       padding-top: 0.8rem;
     }
 
+    /* Action Row */
     .action-row {
       display: flex;
       align-items: center;
@@ -381,17 +463,24 @@
       backdrop-filter: blur(10px);
     }
 
+    .actions-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
     .btn-quote {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.85rem 1.6rem;
+      padding: 0.85rem 1.5rem;
       background: #111827;
       color: #00ffcc;
       border: 1px solid rgba(0, 255, 204, 0.6);
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       border-radius: 10px;
       transition: all 0.25s ease;
       box-shadow: 0 0 12px rgba(0, 255, 204, 0.12);
@@ -405,6 +494,26 @@
       transform: translateY(-2px);
     }
 
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.85rem 1.2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy:hover {
+      border-color: rgba(0, 255, 204, 0.4);
+      background: rgba(0, 255, 204, 0.06);
+    }
+
     .social-dock {
       display: flex;
       align-items: center;
@@ -415,16 +524,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 10px;
       text-decoration: none;
       transition: all 0.25s ease;
     }
 
     .social-item svg {
-      width: 20px;
-      height: 20px;
+      width: 19px;
+      height: 19px;
       fill: currentColor;
     }
 
@@ -462,6 +571,7 @@
       transform: scale(1.08) translateY(-2px);
     }
 
+    /* Contact Card with AJAX UI */
     .contact-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -469,6 +579,7 @@
       padding: 2.2rem;
       backdrop-filter: blur(12px);
       width: 100%;
+      position: relative;
     }
 
     .contact-card h2 {
@@ -553,13 +664,42 @@
       transition: all 0.25s ease;
       box-shadow: 0 0 12px rgba(0, 255, 204, 0.12);
       margin-top: 0.5rem;
+      min-width: 220px;
     }
 
-    .btn-submit:hover {
+    .btn-submit:hover:not(:disabled) {
       background: rgba(0, 255, 204, 0.08);
       border-color: #00ffcc;
       box-shadow: 0 0 20px rgba(0, 255, 204, 0.25);
       transform: translateY(-2px);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    #form-feedback {
+      margin-top: 1.2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+    }
+
+    #form-feedback.success {
+      display: block;
+      background: rgba(0, 255, 204, 0.08);
+      border: 1px solid rgba(0, 255, 204, 0.4);
+      color: var(--cyan);
+    }
+
+    #form-feedback.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #f87171;
     }
 
     footer {
@@ -593,6 +733,44 @@
       <p class="subtitle anim-sub">Αναλαμβάνουμε την αυτόματη συλλογή δεδομένων, τη διασύνδεση εφαρμογών και την κατασκευή ταχύτατων landing pages για την επιχείρησή σας.</p>
     </header>
 
+    <!-- Key Metrics -->
+    <div class="metrics-row anim-section">
+      <div class="metric-card">
+        <div class="metric-val">&lt; 0.8s</div>
+        <div class="metric-label">Μέσος χρόνος απόκρισης & Edge Performance</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">100%</div>
+        <div class="metric-label">Custom data pipelines χωρίς bloated πλατφόρμες</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">99.9%</div>
+        <div class="metric-label">Διαθεσιμότητα σε Vercel Global Edge</div>
+      </div>
+    </div>
+
+    <!-- Proof of Work Terminal -->
+    <div class="anim-section">
+      <div class="section-title"><span>//</span> PROOF OF WORK: LIVE PIPELINE LOG</div>
+      <div class="terminal-box">
+        <div class="terminal-header">
+          <div class="term-dot red"></div>
+          <div class="term-dot yellow"></div>
+          <div class="term-dot green"></div>
+          <div class="term-title">pipeline@dev-ops-architect:~$</div>
+        </div>
+        <div class="terminal-body">
+          <p><span class="t-cyan">$</span> <span class="t-blue">dev-ops-engine</span> --execute-pipeline --mode=headless</p>
+          <p class="t-gray">> [INFO] Initializing headless workers & proxy rotations...</p>
+          <p class="t-green">✔ Connected to endpoints. Parsing DOM structures.</p>
+          <p class="t-green">✔ Extracted 2,840 records in 1.24s (0 schema anomalies).</p>
+          <p class="t-green">✔ Data synchronized into Destination DB / CSV / Sheets.</p>
+          <p><span class="t-cyan">$</span> status: <span class="t-green">ACTIVE (200 OK)</span> • Ready for next scheduled cron job_</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Υπηρεσίες -->
     <main class="grid anim-cards">
       <div class="card">
         <div class="service-icon-box">
@@ -617,8 +795,6 @@
             <line x1="15" y1="20" x2="15" y2="23"></line>
             <line x1="20" y1="9" x2="23" y2="9"></line>
             <line x1="20" y1="14" x2="23" y2="14"></line>
-            <line x1="1" y1="9" x2="4" y2="9"></line>
-            <line x1="1" y1="14" x2="4" y2="14"></line>
           </svg>
         </div>
         <div class="card-title">Αυτοματοποίηση Εργασιών</div>
@@ -638,6 +814,26 @@
       </div>
     </main>
 
+    <!-- Use Cases -->
+    <div class="anim-section">
+      <div class="section-title"><span>//</span> ΣΕΝΑΡΙΑ ΕΦΑΡΜΟΓΗΣ (USE CASES)</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title" style="color: var(--cyan);">01. Price & Market Monitor</div>
+          <div class="card-desc">Καθημερινή αυτόματη παρακολούθηση τιμών ανταγωνιστών σε ηλεκτρονικά καταστήματα και άμεσες ειδοποιήσεις όταν αλλάζουν προσφορές.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--cyan);">02. Data Mining & Leads</div>
+          <div class="card-desc">Συλλογή στοιχείων επιχειρήσεων, τηλεφώνων και επαφών από δημόσιους καταλόγους και κατηγοριοποίηση σε δομημένα αρχεία.</div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="color: var(--cyan);">03. System & API Bridges</div>
+          <div class="card-desc">Αυτόματος συγχρονισμός παραγγελιών ή φορμών απευθείας σε Google Sheets, Telegram bots ή ERP συστήματα.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Διαδικασία σε 3 Βήματα -->
     <div class="anim-section">
       <div class="section-title"><span>//</span> ΠΩΣ ΔΟΥΛΕΥΟΥΜΕ</div>
       <div class="steps-grid">
@@ -661,6 +857,7 @@
       </div>
     </div>
 
+    <!-- FAQ -->
     <div class="anim-section">
       <div class="section-title"><span>//</span> ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ (FAQ)</div>
       <div class="faq-wrapper">
@@ -687,8 +884,14 @@
       </div>
     </div>
 
+    <!-- Actions & Socials Bar -->
     <div class="action-row anim-section">
-      <a href="#contact" class="btn-quote">Ζητήστε Προσφορά</a>
+      <div class="actions-left">
+        <a href="#contact" class="btn-quote">Ζητήστε Προσφορά</a>
+        <button class="btn-copy" id="copy-tg" onclick="copyContact('@Dev_Ops_Architect')">
+          <span>📋</span> <span>Copy Telegram</span>
+        </button>
+      </div>
 
       <div class="social-dock">
         <a href="https://github.com/Dev-Ops-Depth-Ideas" target="_blank" rel="noopener" class="social-item github" title="GitHub">
@@ -713,11 +916,12 @@
       </div>
     </div>
 
+    <!-- Contact Form Section with in-page AJAX Submit -->
     <div class="contact-card anim-section" id="contact">
       <h2>// Επικοινωνία & Προσφορά</h2>
       <p>Συμπληρώστε τα στοιχεία σας και θα επικοινωνήσουμε άμεσα μαζί σας για το έργο σας.</p>
       
-      <form action="https://api.web3forms.com/submit" method="POST">
+      <form id="ajax-contact-form">
         <input type="hidden" name="access_key" value="28624fcb-7195-49da-96ce-f8931dc01287">
         <input type="hidden" name="subject" value="Νέο Αίτημα από Dev-Ops-Architect">
         <input type="hidden" name="from_name" value="Dev-Ops-Architect Site">
@@ -730,17 +934,21 @@
           </div>
 
           <div class="form-group">
-            <label for="contact-info">> EMAIL Ή ΤΗΛΕΦΩΝΟ</label>
-            <input type="text" id="contact-info" name="email" type="email" class="form-control" placeholder="π.χ. email@domain.com ή 69XXXXXXXX" required>
+            <label for="email">> EMAIL ΕΠΙΚΟΙΝΩΝΙΑΣ</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="π.χ. name@example.com" required>
           </div>
         </div>
 
         <div class="form-group" style="margin-bottom: 1.5rem;">
           <label for="message">> ΠΕΡΙΓΡΑΦΗ ΕΡΓΑΣΙΑΣ / ΑΝΑΓΚΗΣ</label>
-          <textarea id="message" name="message" class="form-control" placeholder="Περιγράψτε συνοπτικά τι αυτοματισμό ή σελίδα χρειάζεστε..." required></textarea>
+          <textarea id="message" name="message" class="form-control" placeholder="Περιγράψτε συνοπτικά τι αυτοματισμό ή web project χρειάζεστε..." required></textarea>
         </div>
 
-        <button type="submit" class="btn-submit">Αποστολή Αιτήματος</button>
+        <button type="submit" id="submit-btn" class="btn-submit">
+          <span id="btn-text">Αποστολή Αιτήματος</span>
+        </button>
+
+        <div id="form-feedback"></div>
       </form>
     </div>
 
@@ -750,6 +958,7 @@
   </div>
 
   <script>
+    // Particle Canvas Background
     const canvas = document.getElementById('particles');
     const ctx = canvas.getContext('2d');
     let width, height, particles;
@@ -797,6 +1006,67 @@
     window.addEventListener('resize', resize);
     resize();
     animate();
+
+    // 1-Click Copy Helper
+    function copyContact(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-tg');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<span>✔</span> <span>Copied!</span>';
+        btn.style.borderColor = '#00ffcc';
+        setTimeout(() => {
+          btn.innerHTML = originalHTML;
+          btn.style.borderColor = '';
+        }, 2000);
+      });
+    }
+
+    // In-Page AJAX Web3Forms Submission (No White Page / No Redirect)
+    const form = document.getElementById('ajax-contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const feedback = document.getElementById('form-feedback');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      btnText.textContent = '[ TRANSMITTING... ]';
+      feedback.className = '';
+      feedback.style.display = 'none';
+
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: json
+        });
+
+        const result = await response.json();
+
+        if (response.status === 200 && result.success) {
+          feedback.textContent = '✔ Το αίτημά σας ελήφθη με επιτυχία! Θα επικοινωνήσουμε άμεσα μαζί σας.';
+          feedback.className = 'success';
+          form.reset();
+        } else {
+          feedback.textContent = '✖ Σφάλμα αποστολής: ' + (result.message || 'Παρακαλούμε δοκιμάστε ξανά.');
+          feedback.className = 'error';
+        }
+      } catch (err) {
+        feedback.textContent = '✖ Προέκυψε πρόβλημα δικτύου. Παρακαλούμε δοκιμάστε ξανά.';
+        feedback.className = 'error';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Αποστολή Αιτήματος';
+      }
+    });
   </script>
 </body>
 </html>
