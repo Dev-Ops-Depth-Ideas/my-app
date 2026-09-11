@@ -3,35 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DevOps Dashboard</title>
+  <title>System Terminal | Core Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #090d13;
+      --card-bg: rgba(18, 24, 38, 0.85);
+      --border: #1f293d;
+      --cyan: #00ffcc;
+      --accent: #7928ca;
+      --text: #e2e8f0;
+      --muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     body {
-      background: #0d1117;
-      color: #58a6ff;
-      font-family: monospace;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 90vh;
-      margin: 0;
+      padding: 2.5rem 1rem;
+      background-image: 
+        radial-gradient(ellipse at top, rgba(0, 255, 204, 0.08), transparent 60%),
+        linear-gradient(rgba(18, 24, 38, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18, 24, 38, 0.1) 1px, transparent 1px);
+      background-size: 100% 100%, 24px 24px, 24px 24px;
     }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      background: rgba(0, 255, 204, 0.08);
+      border: 1px solid rgba(0, 255, 204, 0.25);
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
     .card {
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      padding: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      text-align: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
     }
-    h1 { color: #2ea043; margin-bottom: 8px; }
-    p { color: #8b949e; }
+
+    .card:hover {
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 255, 204, 0.08);
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title::before {
+      content: '>';
+      color: var(--cyan);
+      font-weight: bold;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 0.85rem;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--cyan);
+      box-shadow: 0 0 16px rgba(0, 255, 204, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--muted);
+      box-shadow: none;
+    }
+
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Deployment Successful 🚀</h1>
-    <p>Termux ➔ GitHub ➔ Vercel pipeline is fully active.</p>
+  <div class="container">
+    <header>
+      <div class="badge">
+        <div class="dot"></div> SYSTEMS OPERATIONAL
+      </div>
+      <h1>DEV_OPS // <span>SYSTEMS</span></h1>
+      <p class="subtitle">Deploying automated workflows, clean data extraction engines, and resilient digital architectures.</p>
+    </header>
+
+    <main class="grid">
+      <div class="card">
+        <div class="card-title">Data Extraction & Scraping</div>
+        <div class="card-desc">High-speed Python pipelines for collecting, parsing, and normalizing structured data from web environments.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Task Automation</div>
+        <div class="card-desc">Background daemons, API integrations, and scripts designed to eliminate manual data entry and repetitive flows.</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Modern Web Architecture</div>
+        <div class="card-desc">Fast, edge-deployed landing environments and lightweight interfaces tuned for speed and zero latency.</div>
+      </div>
+    </main>
+
+    <div class="actions">
+      <a href="mailto:dev@egkrinis.com" class="btn">INITIALIZE CONTACT</a>
+      <a href="https://github.com/Dev-Ops-Depth-Ideas" target="_blank" rel="noopener" class="btn btn-secondary">INSPECT GITHUB REPO</a>
+    </div>
+
+    <footer>
+      Terminal Pipeline: Termux ➔ GitHub ➔ Vercel Edge Engine
+    </footer>
   </div>
 </body>
 </html>
