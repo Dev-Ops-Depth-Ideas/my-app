@@ -34,7 +34,7 @@
       color: var(--muted);
       margin-bottom: 24px;
     }
-    .nav-bar a { color: var(--accent); text-decoration: none; font-weight: 600; }
+    .nav-bar a { color: var(--accent); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
 
     .profile-header {
       border: 1px solid var(--border);
@@ -42,6 +42,19 @@
       border-radius: 12px;
       padding: 24px 20px;
       margin-bottom: 24px;
+      position: relative;
+    }
+    .header-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid rgba(0, 255, 204, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 14px;
     }
     .brand-title { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
     .brand-desc { color: var(--muted); font-size: 0.85rem; margin-bottom: 18px; }
@@ -72,6 +85,9 @@
       letter-spacing: 0.08em;
       margin: 28px 0 12px;
       text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .item-row {
@@ -96,7 +112,10 @@
       text-align: center;
     }
     .footer-cta {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       max-width: 520px;
       width: 100%;
       background: var(--accent);
@@ -114,10 +133,16 @@
   <div class="container">
     <div class="nav-bar">
       <span>ENDPOINT // QR_MENU_SERVICE</span>
-      <a href="/">[ RETURN ↵ ]</a>
+      <a href="/">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        RETURN
+      </a>
     </div>
 
     <div class="profile-header">
+      <div class="header-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+      </div>
       <div class="brand-title">KRONOS Executive Dining</div>
       <div class="brand-desc">Contemporary Mediterranean Cuisine & Private Cellar Selection.</div>
       <button class="btn-vcard" onclick="downloadVCard()">
@@ -130,7 +155,10 @@
       </button>
     </div>
 
-    <div class="section-label">// CURATED TASTING</div>
+    <div class="section-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      CURATED TASTING
+    </div>
     <div class="item-row">
       <div>
         <div class="item-title">Dry-Aged Black Angus Ribeye</div>
@@ -146,7 +174,10 @@
       <div class="item-cost">€26.00</div>
     </div>
 
-    <div class="section-label">// CELLAR SELECTIONS</div>
+    <div class="section-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h8"></path><path d="M12 11v11"></path><path d="m19 3-7 8-7-8Z"></path></svg>
+      CELLAR SELECTIONS
+    </div>
     <div class="item-row">
       <div>
         <div class="item-title">Assyrtiko Single Vineyard 2022</div>
@@ -164,7 +195,10 @@
   </div>
 
   <div class="fixed-footer">
-    <a href="/#contact" class="footer-cta">DEPLOY SYSTEM FOR YOUR VENUE ↗</a>
+    <a href="/#contact" class="footer-cta">
+      DEPLOY SYSTEM FOR YOUR VENUE
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+    </a>
   </div>
 
   <script>
