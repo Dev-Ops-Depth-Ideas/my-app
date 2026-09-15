@@ -3,6 +3,7 @@
   "rewrites": [
     { "source": "/menu", "destination": "/templates/menu.html" },
     { "source": "/data", "destination": "/templates/data.html" },
-    { "source": "/maps", "destination": "/templates/maps.html" }
+    { "source": "/maps", "destination": "/templates/maps.html" },
+    { "source": "/templates", "destination": "/templates/menu.html" }
   ]
 }
