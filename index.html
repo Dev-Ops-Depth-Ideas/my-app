@@ -682,6 +682,27 @@
       font-family: 'JetBrains Mono', monospace;
       padding-top: 0.5rem;
     }
+  
+    /* Demo Links Pulse & Glow Effects */
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(0, 255, 204, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+    }
+    .demo-badge-link {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .demo-badge-link:hover, .demo-badge-link:active {
+      transform: translateY(-2px) scale(1.04);
+      filter: brightness(1.2);
+    }
+    .demo-badge-pulse {
+      animation: pulseGlow 2.5s infinite;
+    }
+
   </style>
 </head>
 <body>
@@ -1167,6 +1188,27 @@
       border: 1px solid rgba(56, 189, 248, 0.4);
       color: #38bdf8;
     }
+  
+    /* Demo Links Pulse & Glow Effects */
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(0, 255, 204, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+    }
+    .demo-badge-link {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .demo-badge-link:hover, .demo-badge-link:active {
+      transform: translateY(-2px) scale(1.04);
+      filter: brightness(1.2);
+    }
+    .demo-badge-pulse {
+      animation: pulseGlow 2.5s infinite;
+    }
+
   </style>
   <div class="mobile-contact-bar">
     <a href="https://wa.me/306983356050" target="_blank" class="mobile-contact-btn btn-wa">

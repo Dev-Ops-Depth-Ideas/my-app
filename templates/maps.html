@@ -35,6 +35,17 @@
     
     .cta-submit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--green); color: #090d14; text-align: center; padding: 13px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
   </style>
+
+  <style>
+    body {
+      animation: pageFadeIn 0.4s ease-out;
+    }
+    @keyframes pageFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
 </head>
 <body>
   <div class="container">
