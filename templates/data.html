@@ -3,61 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data Extraction Live Demo</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Enterprise ETL & Competitive Scraping</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root { --bg: #0b0f17; --card: rgba(17, 24, 39, 0.85); --border: rgba(255, 255, 255, 0.08); --cyan: #00ffcc; --blue: #38bdf8; --text: #f8fafc; --muted: #94a3b8; }
+    :root {
+      --bg: #090d14;
+      --surface: #111722;
+      --border: rgba(255, 255, 255, 0.08);
+      --cyan: #38bdf8;
+      --text: #f1f5f9;
+      --muted: #8492a6;
+      --green: #22c55e;
+      --red: #ef4444;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-    body { background: var(--bg); color: var(--text); padding: 20px; }
-    .container { max-width: 600px; margin: auto; }
-    .demo-bar { display: flex; justify-content: space-between; align-items: center; border: 1px dashed var(--blue); padding: 8px 14px; border-radius: 8px; font-size: 0.78rem; font-family: 'JetBrains Mono', monospace; color: var(--blue); margin-bottom: 20px; }
-    .demo-bar a { color: var(--blue); text-decoration: none; font-weight: 700; }
-    h1 { font-size: 1.4rem; font-weight: 800; margin-bottom: 6px; }
-    p { color: var(--muted); font-size: 0.85rem; margin-bottom: 16px; }
-    .table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow-x: auto; margin-bottom: 16px; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: left; }
-    th { background: rgba(255,255,255,0.03); padding: 10px 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; border-bottom: 1px solid var(--border); }
-    td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; }
-    .badge-diff { color: #4ade80; font-weight: bold; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--cyan); color: #0b0f17; text-decoration: none; font-weight: 700; font-size: 0.85rem; padding: 10px 16px; border-radius: 8px; cursor: pointer; border: none; }
+    body { background: var(--bg); color: var(--text); padding: 24px 16px; }
+    .container { max-width: 640px; margin: auto; }
+    .nav-bar { display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); padding: 10px 16px; border-radius: 8px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--muted); margin-bottom: 24px; }
+    .nav-bar a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+    h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+    p { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
+    .table-box { border: 1px solid var(--border); background: var(--surface); border-radius: 10px; overflow-x: auto; margin-bottom: 20px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; text-align: left; }
+    th { background: rgba(255,255,255,0.02); padding: 12px 14px; color: var(--muted); font-family: 'JetBrains Mono', monospace; border-bottom: 1px solid var(--border); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; }
+    .pos { color: var(--green); font-weight: 600; }
+    .neg { color: var(--red); font-weight: 600; }
+    .btn-export { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--cyan); color: var(--cyan); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 11px 18px; border-radius: 8px; cursor: pointer; font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="demo-bar">
-      <span>⚡ LIVE ETL PREVIEW: COMPETITOR MONITOR</span>
-      <a href="/">← Πίσω</a>
+    <div class="nav-bar">
+      <span>PIPELINE // DATA_EXTRACTION_ENGINE</span>
+      <a href="/">[ RETURN ↵ ]</a>
     </div>
-    <h1>Αυτόματη Συλλογή Δεδομένων</h1>
-    <p>Καθημερινός συγχρονισμός τιμών ανταγωνισμού σε πραγματικό χρόνο.</p>
-    <div class="table-wrap">
+    <h1>Competitor Pricing Engine (ETL)</h1>
+    <p>Real-time automated scraping and reconciliation pipeline monitoring SKU price variance.</p>
+    <div class="table-box">
       <table>
         <thead>
           <tr>
-            <th>Προϊόν</th>
-            <th>Δική σας Τιμή</th>
-            <th>Ανταγωνιστής</th>
-            <th>Διαφορά</th>
+            <th>SKU Reference</th>
+            <th>Internal Cost</th>
+            <th>Market Avg</th>
+            <th>Delta Variance</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Espresso Blend 1kg</td><td>€24.00</td><td>€26.50</td><td class="badge-diff">-€2.50</td></tr>
-          <tr><td>Decaf Organic 500g</td><td>€14.50</td><td>€14.20</td><td style="color:#f87171;">+€0.30</td></tr>
-          <tr><td>Cold Brew Bottled</td><td>€3.80</td><td>€4.20</td><td class="badge-diff">-€0.40</td></tr>
-          <tr><td>Syrup Vanilla 700ml</td><td>€9.00</td><td>€9.90</td><td class="badge-diff">-€0.90</td></tr>
+          <tr><td>SKU-8821-X</td><td>€184.00</td><td>€219.00</td><td class="pos">-15.9%</td></tr>
+          <tr><td>SKU-4409-B</td><td>€420.00</td><td>€395.00</td><td class="neg">+6.3%</td></tr>
+          <tr><td>SKU-1092-A</td><td>€89.50</td><td>€104.00</td><td class="pos">-13.9%</td></tr>
+          <tr><td>SKU-7730-C</td><td>€612.00</td><td>€680.00</td><td class="pos">-10.0%</td></tr>
         </tbody>
       </table>
     </div>
-    <button class="btn" onclick="downloadCSV()">⬇ Εξαγωγή σε CSV (Demo)</button>
+    <button class="btn-export" onclick="exportData()">EXPORT PRODUCTION DATASET (.CSV)</button>
   </div>
   <script>
-    function downloadCSV() {
-      const csv = "Proion,Diki Sas Timi,Antagonistis,Diafora\nEspresso Blend 1kg,24.00,26.50,-2.50\nDecaf Organic 500g,14.50,14.20,+0.30\nCold Brew Bottled,3.80,4.20,-0.40\nSyrup Vanilla 700ml,9.00,9.90,-0.90";
+    function exportData() {
+      const csv = "SKU,Internal_Cost,Market_Avg,Delta_Variance\nSKU-8821-X,184.00,219.00,-15.9%\nSKU-4409-B,420.00,395.00,+6.3%\nSKU-1092-A,89.50,104.00,-13.9%\nSKU-7730-C,612.00,680.00,-10.0%";
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.setAttribute('download', 'market-monitor-sample.csv');
+      link.setAttribute('download', 'market-intelligence-report.csv');
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>
