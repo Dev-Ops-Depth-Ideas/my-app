@@ -744,7 +744,7 @@
       </div>
         <!-- Υπηρεσίες -->
     <main class="grid anim-cards">
-      <a href="/templates/data.html" class="card" style="display: block; text-decoration: none; color: inherit; cursor: pointer; position: relative;">
+      <a href="/data" class="card" style="display: block; text-decoration: none; color: inherit; cursor: pointer; position: relative;">
         <div style="position: absolute; top: 14px; right: 14px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(56, 189, 248, 0.3);">LIVE PREVIEW ↗</div>
         <div class="service-icon-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -773,7 +773,7 @@
         <div class="card-desc">Εξαλείφουμε τις επαναλαμβανόμενες ρουτίνες συνδέοντας eshop, φόρμες και ειδοποιήσεις, εξοικονομώντας ώρες καθημερινής δουλειάς.</div>
       </a>
 
-      <a href="/templates/menu.html" class="card" style="display: block; text-decoration: none; color: inherit; cursor: pointer; position: relative;">
+      <a href="/menu" class="card" style="display: block; text-decoration: none; color: inherit; cursor: pointer; position: relative;">
         <div style="position: absolute; top: 14px; right: 14px; background: rgba(0, 255, 204, 0.15); color: var(--cyan); font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(0, 255, 204, 0.3);">LIVE DEMO ↗</div>
         <div class="service-icon-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -787,7 +787,7 @@
         <div class="card-desc">Αστραπιαίος ψηφιακός κατάλογος και ψηφιακές κάρτες επαφής στο κινητό των πελατών χωρίς λήψη καμίας εφαρμογής.</div>
       </a>
 
-      <a href="/templates/maps.html" class="card" style="display: block; text-decoration: none; color: inherit; cursor: pointer; position: relative;">
+      <a href="/maps" class="card" style="display: block; text-decoration: none; color: inherit; cursor: pointer; position: relative;">
         <div style="position: absolute; top: 14px; right: 14px; background: rgba(34, 197, 94, 0.15); color: #4ade80; font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; border: 1px solid rgba(34, 197, 94, 0.3);">SHOWCASE ↗</div>
         <div class="service-icon-box">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -1107,5 +1107,59 @@
       }
     });
   </script>
+
+  <!-- Quick Contact Bar (Mobile) -->
+  <style>
+    .mobile-contact-bar {
+      position: fixed;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 440px;
+      background: rgba(11, 15, 23, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      padding: 6px;
+      display: flex;
+      gap: 8px;
+      z-index: 9999;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+    }
+    .mobile-contact-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 14px;
+      border-radius: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-wa {
+      background: #22c55e;
+      color: #0b0f17;
+    }
+    .btn-tg {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+  </style>
+  <div class="mobile-contact-bar">
+    <a href="https://wa.me/306983356050" target="_blank" class="mobile-contact-btn btn-wa">
+      <span>WhatsApp 💬</span>
+    </a>
+    <a href="https://t.me/Dev_Ops_Architect" target="_blank" class="mobile-contact-btn btn-tg">
+      <span>Telegram ⚡</span>
+    </a>
+  </div>
 </body>
+
 </html>
