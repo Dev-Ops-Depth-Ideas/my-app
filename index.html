@@ -1173,6 +1173,31 @@
       <span>Telegram</span>
     </a>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Εντοπισμός όλων των pricing buttons
+      const pricingCards = document.querySelectorAll(".card");
+      pricingCards.forEach(card => {
+        const btn = card.querySelector("a[href="#contact"]");
+        const titleEl = card.querySelector(".card-title");
+        const priceEl = card.querySelector("div[style*="font-size: 1.7rem"], div[style*="font-size:1.7rem"]");
+        
+        if (btn && titleEl) {
+          btn.addEventListener("click", function(e) {
+            const pkgName = titleEl.innerText.trim();
+            const pkgPrice = priceEl ? priceEl.innerText.split("\n")[0].trim() : "";
+            const msgArea = document.querySelector("textarea") || document.querySelector("input[name="message"]");
+            if (msgArea) {
+              msgArea.value = "Γεια σας, ενδιαφέρομαι για το πακέτο: " + pkgName + (pkgPrice ? " (" + pkgPrice + ")" : "") + ". Παρακαλώ ενημερώστε με για τα επόμενα βήματα.";
+              msgArea.focus();
+            }
+          });
+        }
+      });
+    });
+  </script>
 </body>
+
 
 </html>
